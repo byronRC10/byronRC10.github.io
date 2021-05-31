@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <link rel="stylesheet" type="text/css" href="css/estilo.css">
+ <script type="text/javascript" src="js/manipularcanvas.js"></script>
+ <script type="text/javascript" src="js/cargarContenido.js" ></script>
+ 
+
+</head>
+
+<body>
+
+<header class="flex-header">
+    <h1>        
+        <img class="logo" src="img/logo1.png" width="100" height="70"/><canvas id="canvas" width="70" height="70"/> 
+    </h1>
+</header>
+
+<section class="menu_principal">
+   <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="toursView.html">Tours</a></li>
+                        <li><a href="contactsView.html">Contactos</a></li>
+                    </ul>
+   </nav>
+</section>
+
+<section class="info-tours">
+    <div id="seleccion">
+    Tours disponibles:
+    <div><input type="checkbox" name="check-1" value="check-1" id="check-1" class="check-1">
+      <label for="check-1">Tour a los ojos de agua y pesca. Por CRC₡10.000</label></div>
+    <div><input type="checkbox" name="check-2" value="check-2" id="check-2" class="check-2" >
+      <label for="check-2">Tour a la montaña. Por CRC₡6.000</label></div>
+    <div><input type="checkbox" name="check-3" value="check-3" id="check-3" class="check-3">
+      <label for="check-3">Tour al río. Por CRC₡5.000</label></div>
+    <div><input type="checkbox" name="check-4" value="check-4" id="check-4" class="check-4">
+      <label for="check-4">Tour para ver a los tucanes. Por CRC₡6.500</label></div>
+    <div><input type="checkbox" name="check-5" value="check-5" id="check-5" class="check-5">
+      <label for="check-5">Tour para ver mariposas. Por CRC₡6.900</label></div>
+    <div><input type="checkbox" name="check-6" value="check-6" id="check-6" class="check-6">
+      <label for="check-6">Tour para ver a los pericos. Por CRC₡5.900</label></div>
+  </div>
+
+    <label for="lbCantP">Cantidad personas:</label>
+    <input type="inCantP" name="inCantP" id="inCantP" class="inCantP" required/>
+
+   <label for="lbCantT">Cantidad tours:</label>
+   <input type="inCantT" name="inCantT" id="inCantT" class="inCantT" required/>
+
+   <input type="button" value="Comprar" class="Comprar" onClick="calcular()" />
+   <label id="informe" for="informe">Costo</label>
+
+
+  <div id="seleccion2">
+   <p> Descuentos: <br>
+    -Tour para ver tucanes: 10% <br>
+    -Cualquier tour para 4 o más personas: 15% <br>
+    -Por la compra de 3 o más tours: 10% </p>
+   </div>
+</section>
+
+<script>
+
+function calcular() {
+
+  var cantP = document.querySelector(".inCantP").value;
+  var cantpInt = parseInt(cantP);
+
+   if (Number.isInteger(cantpInt) && cantpInt > 0) {
+
+        var cantT = document.querySelector(".inCantT").value;
+        var canttInt= parseInt(cantT);
+        var tour1 = document.querySelector(".check-1").checked;
+        var tour2 = document.querySelector(".check-2").checked;
+        var tour3 = document.querySelector(".check-3").checked;
+        var tour4 = document.querySelector(".check-4").checked;
+        var tour5 = document.querySelector(".check-5").checked;
+        var tour6 = document.querySelector(".check-6").checked;
+        var descuento = 0;
+        var montoDescuento = 0;
+        var monto = 0;
+        var precio = document.getElementById('informe');
+
+        if (tour1 == true) {
+            monto += 10000;
+        }
+
+        if (tour2 == true) {
+            monto += 6000;
+        }
+
+        if (tour3 == true) {
+            monto += 5000;
+        }
+
+        if (tour4 == true) {
+            monto += 6500;
+        }
+
+        if (tour5 == true) {
+            monto += 6900;
+        }
+
+        if (tour6 == true) {
+            monto += 5900;
+        }
+
+        if (canttInt >= 3) {
+            descuento += 10
+        }
+
+        if (cantpInt >= 4) {
+            descuento += 15;
+        }
+
+        if (tour4 == true) {
+            descuento += 10;
+        }
+
+        if (descuento != 0) {
+            descuento = descuento / 100;
+            monto = (monto * cantpInt) * canttInt;
+            montoDescuento = monto * descuento;
+            monto -= montoDescuento;
+
+        } else {
+            monto = (monto * cantpInt) * canttInt;
+        }
+
+        precio.innerHTML = 'CRC₡' + monto;
+    
+    } 
+  
+}
+
+</script>
+
+<footer class="flex-footer">
+  <p>Pagina creada con fines educativos.<br></p>
+  <p>Universidad de Costa Rica Sede del Atlantico.<br></p>
+  <p>Lenguajes para Aplicaciones Comerciales IF4001.<br></p>
+  <p>No hay paginas referentes a la zona.<br></p>
+ <a href="http://www.sinac.go.cr/ES/ac/accvc/mng/Paginas/default.aspx">Monumento de Guayabo</a> 
+</footer>
+
+</body>
+</html>

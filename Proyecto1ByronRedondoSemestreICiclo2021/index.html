@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <link rel="stylesheet" type="text/css" href="css/estilo.css">
+ <script type="text/javascript" src="js/manipularcanvas.js"></script>
+ <script type="text/javascript" src="js/cargarContenido.js" ></script>
+
+</head>
+
+<body>
+
+<header class="flex-header">
+      <h1>        
+        <img class="logo" src="img/logo1.png" width="100" height="70"/><canvas id="canvas" width="70" height="70"/> 
+      </h1>
+      
+</header>
+
+<section class="menu_principal">
+   <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="toursView.html">Tours</a></li>
+                        <li><a href="contactsView.html">Contactos</a></li>
+
+                    </ul>
+   </nav>
+</section>
+
+<main  class="flex-main">
+    <nav class="flex-nav">
+           <ul>
+                <li><a href="javascript:mostrarMorpho()">Morpho</a></li>
+                <li><a href="javascript:mostrarBasilisco()">Basilisco</a></li>
+                <li><a href="javascript:mostrarTucan()">Tucan</a></li>
+                <li><a href="javascript:mostrarChisbala()">Chisbala</a></li>
+            </ul>
+
+    </nav>
+    <article class="flex-article">
+            <h2>
+                Información
+            </h2>
+
+            <img id="imagen"  class="imagen" src="img/morpho.jpg" alt="Morpho" width="500" height="450"/>
+
+            <p id="parrafocontenido">La mariposa Morpho Azul (Morpho peleides) es una de las mariposas 
+                más grandes del mundo, con una envergadura de hasta 8 pulgadas de largo. 
+                Las mariposas Morpho Azul son conocidas por el espectacular azul de la parte 
+                superior de sus alas, que en realidad no se debe a un pigmento, sino a la 
+                configuración de escamas que reflejan la luz de manera que produce un 
+                aparente color azul iridiscente.</p>
+
+    </article>
+    <aside class="flex-aside">
+
+       <p>¡Promoción del mes: Tour para ver tucanes: 10%! <br><br><br><br><br><br></p>
+
+      <img id="animal1" class="animal1" src="img/tamaga.jpg" width="150" height="150">
+
+      <img id="animal2" src="img/coyote.jpg" width="150" height="150">
+
+       <!-- Modal -->
+       <div id="modal" class="modal">
+
+        <!-- Boton cierre -->
+        <span class="close" onclick="document.getElementById('modal').style.display = 'none'">&times;</span>
+
+        <!-- para contener imagen -->
+        <img class="modal-content" id="img01">
+
+        <!-- para texto de la imagen -->
+        <div id="caption" style="text-align: justify;">
+            
+        </div>
+
+    </aside>
+  </main>
+
+<footer class="flex-footer">
+  <p>Pagina creada con fines educativos.<br></p>
+  <p>Universidad de Costa Rica Sede del Atlantico.<br></p>
+  <p>Lenguajes para Aplicaciones Comerciales IF4001.<br></p>
+  <p>No hay paginas referentes a la zona.<br></p>
+ <a href="http://www.sinac.go.cr/ES/ac/accvc/mng/Paginas/default.aspx">Monumento de Guayabo</a> 
+</footer>
+
+<script>
+    var modal = document.getElementById('modal');
+
+    var img1, img2;
+    img1 = document.getElementById("animal1");
+    img2 = document.getElementById("animal2");
+
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    img1.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        modalImg.alt = this.alt;
+        captionText.innerHTML = 'La tamagá es una serpiente pequeña, alcanza una longitud máxima de 65 cm, aunque en promedio los adultos están cerca de 50 cm. Las hembras son más largas y robustas que los machos, cuya longitud máxima conocida es 48 cm. La cabeza es grande, ancha y bien definida. El hocico es puntiagudo y la cola corta.'}
+
+    img2.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        modalImg.alt = this.alt;
+        captionText.innerHTML = 'El coyote es una especie de mamífero carnívoro de la familia Canidae. Los coyotes solo se encuentran en América del Norte, América Central y recientemente América del Sur; desde Canadá hasta Colombia.'}
+
+    var span = document.getElementsByClassName("close")[0];
+
+   // para cerrar la ventana
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+</script>   
+
+</body>
+</html>
